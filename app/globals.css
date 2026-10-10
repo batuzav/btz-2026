@@ -1,0 +1,201 @@
+/* ============================================================
+   PEDRO VALDEZ — PORTAFOLIO N°01
+   Editorial B&N, homenaje a Comme des Garçons / Six.
+   Fuentes inyectadas por next/font como variables CSS.
+   ============================================================ */
+
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+
+  --paper:#ECE9E1;
+  --paper-2:#E3DFD4;
+  --ink:#000000;
+  --ink-soft:#1b1b17;
+  --rule:#000000;
+  --grain-blend:multiply;
+  --grain-opacity:.055;
+
+  /* fallbacks por si next/font no cargara */
+  --font-hanken:system-ui, sans-serif;
+  --font-mono:ui-monospace, monospace;
+  --font-jp:system-ui, sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0C0B09; --paper-2:#131210;
+    --ink:#EDE8DB; --ink-soft:#d8d2c4; --rule:#EDE8DB;
+    --grain-blend:screen; --grain-opacity:.07;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0C0B09; --paper-2:#131210;
+  --ink:#EDE8DB; --ink-soft:#d8d2c4; --rule:#EDE8DB;
+  --grain-blend:screen; --grain-opacity:.07;
+}
+
+*{ box-sizing:inherit; }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); -webkit-text-size-adjust:100%; }
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font-hanken);
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:9;
+  mix-blend-mode:var(--grain-blend); opacity:var(--grain-opacity);
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.sheet{ max-width:1180px; margin:0 auto; padding:clamp(16px,3.5vw,40px) clamp(16px,4vw,52px); position:relative; z-index:1; }
+
+/* ---------- dateline ---------- */
+.dateline{
+  display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  font-family:var(--font-mono); font-size:clamp(.6rem,1.4vw,.72rem);
+  letter-spacing:.12em; padding-bottom:.6em; border-bottom:2px solid var(--rule); text-transform:uppercase;
+}
+.dateline span{ white-space:nowrap; } .dateline .mid{ opacity:.7; }
+
+/* ---------- masthead ---------- */
+.masthead{ padding-top:clamp(14px,3vw,30px); padding-bottom:clamp(10px,2vw,20px); }
+.masthead .line1,.masthead .line2{
+  display:block; font-weight:900; line-height:.82; letter-spacing:-.02em; white-space:nowrap;
+}
+.masthead .line1{ font-size:clamp(3.4rem,20vw,15rem); }
+.masthead .line2{ font-size:clamp(3.4rem,20vw,15rem); margin-left:-.01em; margin-right:-18vw; }
+.masthead .role{
+  display:block; margin-top:clamp(10px,1.6vw,20px);
+  font-family:var(--font-mono); font-size:clamp(.68rem,1.6vw,.95rem);
+  letter-spacing:.34em; text-transform:uppercase;
+}
+.reveal{ clip-path:inset(0 100% 0 0); animation:wipe 1.15s cubic-bezier(.2,.7,.1,1) forwards; }
+.line2.reveal{ animation-delay:.18s; }
+@keyframes wipe{ to{ clip-path:inset(0 0 0 0); } }
+@media (prefers-reduced-motion:reduce){ .reveal{ clip-path:none; animation:none; } }
+
+/* ---------- lead ---------- */
+.lead{
+  display:grid; grid-template-columns:1.15fr 1fr; gap:clamp(20px,4vw,60px);
+  border-top:2px solid var(--rule); padding-top:clamp(18px,2.4vw,30px); margin-top:clamp(8px,1.4vw,16px);
+}
+.lead-statement{
+  font-weight:800; font-size:clamp(1.8rem,5vw,4rem); line-height:1; letter-spacing:-.015em; margin:0;
+}
+.bio{
+  columns:2; column-gap:clamp(16px,2.2vw,30px); column-rule:1px solid var(--rule);
+  font-size:clamp(.82rem,1.15vw,.94rem); line-height:1.46; text-align:justify; hyphens:auto;
+}
+.bio p{ margin:0 0 .85em; }
+.bio p:first-child::first-letter{ font-weight:900; font-size:3.1em; line-height:.72; float:left; padding:.06em .08em 0 0; }
+.bio .kicker{
+  display:inline-block; font-family:var(--font-mono); font-size:.62rem; letter-spacing:.18em;
+  text-transform:uppercase; border-bottom:1px solid var(--rule); padding-bottom:.2em; margin-bottom:.9em;
+}
+@media (max-width:760px){
+  .lead{ grid-template-columns:1fr; gap:22px; }
+  .bio{ columns:1; column-rule:none; }
+  .masthead .line2{ margin-right:-8vw; }
+}
+
+/* ---------- impacto ---------- */
+.impact{ margin-top:clamp(34px,5vw,70px); border-top:2px solid var(--rule); }
+.impact-head{
+  display:flex; justify-content:space-between; align-items:baseline; padding:.55em 0;
+  font-family:var(--font-mono); font-size:clamp(.64rem,1.5vw,.78rem);
+  letter-spacing:.2em; text-transform:uppercase; border-bottom:1px solid var(--rule);
+}
+.impact-head .n{ opacity:.65; }
+.figs{ display:grid; grid-template-columns:repeat(3,1fr); }
+.fig{ padding:clamp(16px,2.4vw,30px) clamp(14px,2vw,26px) clamp(16px,2.4vw,30px) 0; border-bottom:1px solid var(--rule); }
+.fig + .fig{ border-left:1px solid var(--rule); padding-left:clamp(14px,2vw,26px); }
+.fig .num{ font-weight:900; font-size:clamp(2.6rem,7.5vw,5.6rem); line-height:.86; letter-spacing:-.03em; }
+.fig .cap{
+  margin-top:.7em; font-family:var(--font-mono); font-size:clamp(.64rem,1.2vw,.76rem);
+  line-height:1.5; letter-spacing:.02em; max-width:30ch;
+}
+@media (max-width:680px){
+  .figs{ grid-template-columns:1fr; }
+  .fig{ padding:clamp(16px,5vw,24px) 0; }
+  .fig + .fig{ border-left:none; padding-left:0; }
+}
+
+/* ---------- trabajos ---------- */
+.work{ margin-top:clamp(34px,5vw,70px); border-top:2px solid var(--rule); }
+.work-head{
+  display:flex; justify-content:space-between; align-items:baseline; padding:.55em 0;
+  font-family:var(--font-mono); font-size:clamp(.64rem,1.5vw,.78rem);
+  letter-spacing:.2em; text-transform:uppercase; border-bottom:1px solid var(--rule);
+}
+.work-head .n{ opacity:.65; }
+.entry{
+  display:grid; grid-template-columns:auto 1fr auto; align-items:baseline; gap:clamp(10px,2vw,26px);
+  padding:clamp(14px,2.2vw,26px) 0; border-bottom:1px solid var(--rule);
+}
+.entry .idx{ font-family:var(--font-mono); font-size:clamp(.7rem,1.4vw,.85rem); padding-top:.55em; }
+.entry .title{ font-weight:800; font-size:clamp(1.5rem,4.6vw,2.9rem); line-height:.98; letter-spacing:-.01em; margin:0 0 .25em; }
+.entry .title a{ color:inherit; text-decoration:none; box-shadow:inset 0 -2px 0 var(--rule); }
+.entry .title a:hover{ background:var(--ink); color:var(--paper); box-shadow:none; }
+.entry .title a:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+.entry .tag{
+  display:inline-block; vertical-align:middle; margin-left:.5em;
+  font-family:var(--font-mono); font-weight:400; font-size:.34em; letter-spacing:.12em;
+  text-transform:uppercase; border:1px solid var(--rule); border-radius:999px; padding:.35em .7em; transform:translateY(-.35em);
+}
+.entry .desc{ font-size:clamp(.8rem,1.1vw,.9rem); line-height:1.4; max-width:50ch; text-align:justify; hyphens:auto; }
+.entry .meta{
+  font-family:var(--font-mono); font-size:clamp(.62rem,1.3vw,.74rem); letter-spacing:.08em;
+  text-transform:uppercase; text-align:right; line-height:1.6; white-space:nowrap;
+}
+@media (max-width:640px){
+  .entry{ grid-template-columns:auto 1fr; }
+  .entry .meta{ grid-column:1 / -1; text-align:left; padding-top:.5em; opacity:.8; white-space:normal; }
+}
+
+/* ---------- strips ---------- */
+.strip{
+  padding:clamp(12px,1.6vw,18px) 0; border-bottom:1px solid var(--rule);
+  font-family:var(--font-mono); font-size:clamp(.66rem,1.5vw,.82rem);
+  letter-spacing:.05em; line-height:1.9; word-spacing:.08em;
+}
+.strip:last-of-type{ border-bottom:2px solid var(--rule); }
+.strip b{ font-weight:700; text-transform:uppercase; letter-spacing:.14em; margin-right:.5em; }
+
+/* ---------- manifiesto ---------- */
+.manifesto{ margin-top:clamp(40px,6vw,90px); max-width:760px; }
+.manifesto .jp{
+  font-family:var(--font-jp),"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",system-ui,sans-serif;
+  font-weight:700; font-size:clamp(.92rem,2.3vw,1.3rem);
+  line-height:1.7; letter-spacing:.02em; margin:0 0 clamp(18px,2.4vw,30px);
+}
+.manifesto .en{
+  font-family:var(--font-mono); font-weight:700; font-size:clamp(1.05rem,3vw,1.85rem);
+  line-height:1.4; letter-spacing:.04em; margin:0;
+}
+.manifesto .en span{ display:block; }
+.manifesto .sig{ font-family:var(--font-mono); font-size:clamp(.8rem,1.8vw,1rem); letter-spacing:.06em; margin-top:clamp(14px,2vw,22px); }
+
+/* ---------- colophon ---------- */
+.colophon{
+  margin-top:clamp(40px,6vw,90px); padding-top:.8em; border-top:2px solid var(--rule);
+  display:flex; justify-content:space-between; align-items:flex-end; gap:18px; flex-wrap:wrap;
+}
+.colophon .wordmark{ font-weight:900; font-size:clamp(1.4rem,5vw,3rem); letter-spacing:-.01em; line-height:.9; white-space:nowrap; }
+.colophon .contact{
+  font-family:var(--font-mono); font-size:clamp(.66rem,1.5vw,.8rem);
+  letter-spacing:.06em; text-transform:lowercase; text-align:right; line-height:1.8;
+}
+.colophon .place{ text-transform:none; opacity:.7; }
+.colophon a{ color:inherit; text-decoration:none; border-bottom:1px solid var(--rule); }
+.colophon a:hover{ background:var(--ink); color:var(--paper); }
+.colophon a:focus-visible{ outline:2px solid var(--ink); outline-offset:3px; }
+@media (max-width:560px){
+  .colophon{ flex-direction:column; align-items:flex-start; }
+  .colophon .contact{ text-align:left; }
+}
