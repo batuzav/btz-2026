@@ -207,7 +207,7 @@ export default function Home() {
           </a>
           <br />
           <span className="place">
-            Tuxtla Gutiérrez, MX · Ing. en Informática, UPSIN · N°01 · 2026
+            Mazatlán, Sinaloa, MX · Ing. en Informática, UPSIN · N°01 · 2026
           </span>
         </div>
       </footer>
