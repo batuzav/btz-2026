@@ -206,6 +206,10 @@ export default function Home() {
             github.com/batuzav
           </a>
           <br />
+          <a href="/CV_Pedro_Valdez_Mejia_2026.pdf" download>
+            Descargar CV (PDF)
+          </a>
+          <br />
           <span className="place">
             Mazatlán, Sinaloa, MX · Ing. en Informática, UPSIN · N°01 · 2026
           </span>
