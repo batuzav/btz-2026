@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hanken_Grotesk, Space_Mono, Noto_Sans_JP } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const hanken = Hanken_Grotesk({
@@ -43,7 +44,10 @@ export default function RootLayout({
       lang="es"
       className={`${hanken.variable} ${mono.variable} ${notoJP.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
